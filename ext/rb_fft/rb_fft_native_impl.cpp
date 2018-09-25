@@ -31,26 +31,24 @@ static VALUE NativeImpl_fft(VALUE _self, VALUE rb_samples) {
   // Marshall Ruby input into C++
   for (long i = 0; i < samples_len; ++i) {
     // Fetch a element from the array
-    VALUE elem = rb_ary_entry(rb_samples, i);
+    /* TODO complete me */
 
     // The element must be of Ruby type Complex
-    if (!RB_TYPE_P(elem, T_COMPLEX)) {
-      rb_raise(rb_eArgError, "array elements must be Complex numbers");
+    // if (!RB_TYPE_P(elem, T_COMPLEX)) {
+    //   rb_raise(rb_eArgError, "array elements must be Complex numbers");
 
-      // NOTE memory freed here
-      delete[] samples;
-    }
+    //   // NOTE memory freed here
+    //   delete[] samples;
+    // }
 
     // Call accessors on the Complex to fetch the two components
-    VALUE rb_real = rb_funcall(elem, idReal, 0);
-    VALUE rb_imag = rb_funcall(elem, idImag, 0);
+    /* TODO complete me */
 
     // Convert Ruby values to C data
-    double real =  NUM2DBL(rb_real);
-    double imag =  NUM2DBL(rb_imag);
+    /* TODO complete me */
 
     // Convert to complex<T> then add to the array
-    samples[i] = complex<double>(real, imag);
+    /* TODO complete me */
   }
 
   // Do FFT calculation here NOTE mutates input!
@@ -62,19 +60,17 @@ static VALUE NativeImpl_fft(VALUE _self, VALUE rb_samples) {
   // Marshall C++ state into Ruby output
   for (long i = 0; i < samples_len; ++i) {
     // Get the native complex
-    complex<double> c = samples[i];
+    /* TODO complete me */
 
     // Convert data to a Ruby representation
-    VALUE rb_real = DBL2NUM(c.real());
-    VALUE rb_imag = DBL2NUM(c.imag());
+    /* TODO complete me */
 
     // Create a Ruby Complex. It has a private constructor we must call the
     // global function `Complex(...)` to construct a new instance
-    // TODO can this raise?
-    VALUE rb_cmpx = rb_funcall(rb_mKernel, idComplex, 2, rb_real, rb_imag);
+    /* TODO complete me */
 
     // Push into the result array
-    rb_ary_push(rb_result, rb_cmpx);
+    /* TODO complete me */
   }
 
   // NOTE memory freed here
