@@ -32,13 +32,14 @@ static VALUE NativeImpl_fft(VALUE _self, VALUE rb_samples) {
   for (long i = 0; i < samples_len; ++i) {
     // Fetch a element from the array
     /* TODO complete me */
+    VALUE elem = rb_samples[i]
 
     // The element must be of Ruby type Complex
     // if (!RB_TYPE_P(elem, T_COMPLEX)) {
-    //   rb_raise(rb_eArgError, "array elements must be Complex numbers");
-
     //   // NOTE memory freed here
     //   delete[] samples;
+
+    //   rb_raise(rb_eArgError, "array elements must be Complex numbers");
     // }
 
     // Call accessors on the Complex to fetch the two components
